@@ -1,4 +1,4 @@
 # composeforbeginner
 
 ScreenShot of my first Hello JC app
-![img.png](img.png)
+![jc_screenshot.png](jc_screenshot.png)
