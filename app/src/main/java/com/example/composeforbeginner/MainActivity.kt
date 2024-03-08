@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -14,8 +17,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.composeforbeginner.ui.theme.ComposeForBeginnerTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,19 +44,32 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    Column(
+    Box(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Hello $name!",
-            modifier = modifier
+        Image(
+            modifier = Modifier.size(200.dp).align(Alignment.TopCenter),
+            painter = painterResource(id = R.drawable.compose),
+            contentDescription = "android",
+            contentScale = ContentScale.Fit
         )
+        Column(
+            modifier = Modifier.fillMaxSize().align(Alignment.Center),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Hello $name!",
+                modifier = modifier
+            )
 
-        Button(onClick = { Toast.makeText(context, "Click Me Clicked.", Toast.LENGTH_SHORT).show() }) {
-            Text(text = "Click Me")
+            Button(onClick = {
+                Toast.makeText(context, "Click Me Clicked.", Toast.LENGTH_SHORT).show()
+            }) {
+                Text(text = "Click Me")
+            }
         }
+
     }
 
 }
